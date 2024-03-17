@@ -1,0 +1,12 @@
+## Machine Learning
+- What is ML? a field of study that makes computer learn without being explicitly programmed
+- ML is a sub-field of AI
+- application? self-driving cars, payment fraud, healthcare, speech recognition, .....
+- ultimate purpose? AGI(Artificial General Intelligence) perfoms at a human-like level
+    - How? through learning algorithms
+- ML algorithms
+    - Supervised learning: widely used in real-life applications
+    - Unsupervised learning
+    - Recommender systems
+    - Reinforcement learning
+- Course also focus on practical advice on how to apply, when to apply different algorithms
