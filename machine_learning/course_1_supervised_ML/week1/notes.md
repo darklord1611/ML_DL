@@ -10,3 +10,16 @@
     - Recommender systems
     - Reinforcement learning
 - Course also focus on practical advice on how to apply, when to apply different algorithms
+---
+### Supervised Learning
+- map input x -> output label y
+- learning algorithms include a set of examples + with the **right answer**
+    - input: email, output: spam? -> spam filtering
+    - input: English, output: Spanish -> machine translation
+    - input: advertisements, user info, output: click? -> online advertising
+- after training, take completely new input x -> produce y
+- given a set of data points, figure out the appropriate line, curve, ... to fit most of them
+- types of algorithms:
+    - regression: predicting a real number(given the daily market data, predict the Bitcoin price)
+    - classification: predicting a discrete number(class/category) (given the weight and height of a football player, determine his/her position) 
+- boundary lines: lines that separate alike groups of data points
