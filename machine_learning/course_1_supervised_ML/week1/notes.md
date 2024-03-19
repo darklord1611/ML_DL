@@ -23,3 +23,16 @@
     - regression: predicting a real number(given the daily market data, predict the Bitcoin price)
     - classification: predicting a discrete number(class/category) (given the weight and height of a football player, determine his/her position) 
 - boundary lines: lines that separate alike groups of data points
+---
+### Unsupervised Learning
+- find interesting pattern, structure in unlabeled data sets without preprocessed labels
+- types of UL:
+    - Clustering:
+        - Example: Google News use clustering algorithms to group related news stories
+        - group related things into clusters
+    - Anomaly detection:
+        - find unusual data points
+	- Example: payment fraud, error detection, ...
+    - Dimensionality reduction:
+	- compress data using fewer numbers(features) but retain almost all info if possible, avoid overfitting
+
