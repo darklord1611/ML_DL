@@ -35,4 +35,7 @@
 	- Example: payment fraud, error detection, ...
     - Dimensionality reduction:
 	- compress data using fewer numbers(features) but retain almost all info if possible, avoid overfitting
-
+- hyper-parameters: values remain unchange before configuring and throughout training
+    - Example: train-test split ratio, number of hidden layers in a NN, learning rate(gradient descent)
+- parameters: values will change throughout training
+    - Example: weights of features in linear or logistic regression models, centroids in clustering problems 
