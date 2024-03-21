@@ -75,3 +75,4 @@
 - cost function $J_{w,b}$ = $\frac{1}{2m}$$\sum_{i=1}^{m} (\hat{y}^{i} - y^{i})^{2}$ (square error)
 - ideally we want to minimize $J_{w,b}$
 - $f_{w,b}$ is a function of x(with fixed w and given b == 0) while $J_{w,b}$ is a function of w(given b == 0)
+- contour plots show 3D surface on a 2D plane
