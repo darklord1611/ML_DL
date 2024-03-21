@@ -46,8 +46,11 @@
   - Example: train-test split ratio, number of hidden layers in a NN, learning rate(gradient descent)
 - parameters: values will change throughout training
   - Example: weights of features in linear or logistic regression models, centroids in clustering problems
+
 ---
+
 ### Linear Regression
+
 - basically find a straight line that fit most of the data points
 - regression models predict a number as the output, linear regression is a type of regression models
 - classification models predict categories
@@ -67,12 +70,38 @@
 ---
 
 ### Cost function
+
 - cost function measures how well your model fits the training data
 - w, b are parameters aka variables(coefficients/weights) that can be adjusted during training to improve the model
 - $\hat{y}$ = $f_{w,b}$($x^i$) = w$x^i$ + b is the predicted output
 - $\sum_{i=1}^{m} (\hat{y}^{i} - y^{i})^{2}$ is the error
 - what if training size get bigger? then the above expression grows as well -> compute the average square error instead
-- cost function $J_{w,b}$ = $\frac{1}{2m}$$\sum_{i=1}^{m} (\hat{y}^{i} - y^{i})^{2}$ (square error)
+- cost function $J_{w,b}$ = $\frac{1}{2m}$ $\sum_{i=1}^{m}(\hat{y}^{i} - y^{i})^{2}$ (square error)
 - ideally we want to minimize $J_{w,b}$
 - $f_{w,b}$ is a function of x(with fixed w and given b == 0) while $J_{w,b}$ is a function of w(given b == 0)
 - contour plots show 3D surface on a 2D plane
+
+---
+
+### Gradient descent
+
+- minimize $J_{w,b}$ -> keep changing w, b to reduce until at or near minimum
+- 3D plots will have hills aka maximum values, valleys aka minimum values
+- gradient descent -> how to go from a hill(or any starting point) to a valley as efficiently as possible? -> spin around 360 degree, find the steepest direction -> go there -> repeat until convergence
+- gradient descent not neccessarily direct to the global minimum
+- formula: $w = w - \alpha\frac{\partial}{\partial w}$${J(w,b)}$, $b = b - \alpha\frac{\partial}{\partial b}$${J(w,b)}$
+  - $\alpha$ is the learning rate(how big is a step? how agressive is the gradient descent?)
+  - $\frac{\partial}{\partial w}$${J(w,b)}$ is the direction to which the model takes a step
+  - update w and b simultaneously
+- when do we stop? when w and b converge aka stop or change just a little compared to previous values
+- intuition:
+  - consider cost function $J$ with one variable w, derivative of $J$ is the tangent line
+  - consider points from each side of the parabol, what does the update look like?
+- what if $\alpha$ too small? too large? (divergent, overshooting, slow)
+- able to reach local minimum with fixed $\alpha$ (as derivative becomes smaller)
+- apply to the square error function:
+  - $\frac{\partial}{\partial w}$${J(w,b)}$ = $\frac{1}{m}\sum_{i=1}^{m} (f_{w,b}(x^{i}) - y^{i})x^{i}$
+  -
+  - $\frac{\partial}{\partial b}$${J(w,b)}$ = $\frac{1}{m}\sum_{i=1}^{m} (f_{w,b}(x^{i}) - y^{i})$
+- square error cost function is a convex function aka function with one single, unique global minimum
+- batch gradient descent: at each step of GD, look at all the training examples
