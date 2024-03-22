@@ -25,3 +25,12 @@
 - calculate w, b without iterations? use normal equation(only use for LR)
   - this algorithm doesn't generalize to other learning algorithms
   - slow when number of features is large(> 10000)
+
+### Feature scaling
+
+- large difference between weights of features -> slower gradient descent -> how to solve? scale features in an appropriate way
+- how to scale?
+  - diving by the maximum -> scale back to 0 <= x <= 1
+  - mean normalization(normally between -1 and 1) -> $x_{1}$ = $\frac{x_{1} - \mu_{1}}{max - min}$
+  - Z-score normalization -> $x_{1}$ = $\frac{x_{1} - \mu_{1}}{\sigma_{1}}$, learn more about standard deviation
+- aim for -1 <= x <= 1 for each feature $x_{i}$
