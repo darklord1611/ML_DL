@@ -30,7 +30,24 @@
 
 - large difference between weights of features -> slower gradient descent -> how to solve? scale features in an appropriate way
 - how to scale?
-  - diving by the maximum -> scale back to 0 <= x <= 1
+  - diving by the maximum -> scale back to 0 <= x <= 1, or more general, $x = \frac{x - min}{max - min}$
   - mean normalization(normally between -1 and 1) -> $x_{1}$ = $\frac{x_{1} - \mu_{1}}{max - min}$
-  - Z-score normalization -> $x_{1}$ = $\frac{x_{1} - \mu_{1}}{\sigma_{1}}$, learn more about standard deviation
+  - Z-score normalization -> $x_{1}$ = $\frac{x_{1} - \mu_{1}}{\sigma_{1}}$, all features will have mean 0 and standard deviation of 1
+    - $\mu_{j} = \frac{1}{m}\sum_{i=1}{m}x_{j}^{i}$
+    -
+    - $\sigma_{j}^{2} = \frac{1}{m}\sum_{i=1}{m}(x_{j}^{i} - \mu_{j})^{2}$
+    - remember to store calculated mean and SD for future inputs
 - aim for -1 <= x <= 1 for each feature $x_{i}$
+
+### Other stuff
+
+- how to ensure gradient descent is working properly? plot the graph of cost function with number of iterations -> learning curve
+- $J(\vec w,b)$ should be decreased after each iteration
+- another way is to declare $\epsilon = 10^{-3}$, if $J(\vec w, b)$ decrease <= $\epsilon $ in an iteration -> convergence
+- the learning curve varied(up and down)? $\alpha$ maybe too large
+- how to debug? set $\alpha$ to a very small value -> cost still not decrease? -> bug in code
+- feature engineering? design new features, transform or combine features to create a better model
+  - Example: predicting house price, suppose we have 3 features, length-width-height of a pool -> another feature: volume = l x w x h -> 4 features in total
+- Polynomial regression: quadratic, cubic
+  - feature scaling is becoming increasingly important
+  - the weight of the feature will determine whether it useful or not
