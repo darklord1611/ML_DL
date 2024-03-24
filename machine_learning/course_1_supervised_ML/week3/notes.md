@@ -84,3 +84,4 @@
 - regularized logistic regression:
   - cost function: $J(\vec w,b) := J(\vec w,b) + \frac{\lambda}{2m}\sum_{j=1}^{n}w_{j}^{2}$
   - update rules are the same as linear regression
+- **note**: as a standard practice, b is not regularized
