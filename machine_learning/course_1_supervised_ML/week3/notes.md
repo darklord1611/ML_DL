@@ -52,3 +52,35 @@
   - bias? happen when the model fail to capture a pattern in the data, or has a strong but wrong preconception
 - fitting the data set well? -> "normal-fitting" -> good generalization aka make predictions based on new inputs
 - fitting the data set extremely well? -> overfitting(high variance) -> not generalize well(too many features)
+- how to address?
+  - get more training examples
+  - selected fewer features -> problem? useful features may be left out
+  - regularization -> reduce size of some parameters
+
+### Regularized regression
+
+- suppose linear regression with 4 parameters $w_{1}, w_{2}, w_{3}, w_{4}$
+- modify cost function to be: $f_{\vec w,b}(x) := f_{\vec w,b}(x) + 1000w_{3}^{2} + 1000w_{4}^{2}$
+  - high cost if $w_{3}$ and $w_{4}$ is large
+  - solution? force $w_{3}$ and $w_{4}$ to be small(cancel out effect of that particular feature) -> regularized $w_{3} and w_{4}$
+- how to know which features are important? include all then penalize by add to cost function:
+  - $J(\vec w,b) = \frac{1}{2m}\sum_{i=1}^{m}(f_{\vec w,b}(\vec x^{i} - y^{i}))^{2} + \frac{\lambda}{2m}\sum_{j=1}^{n}w_{j}^{2}$
+  - $n$ is the number of features, $\lambda$ is the regularization parameter ($\lambda$ > 0),
+  - $\frac{\lambda}{2m}\sum_{j=1}^{n}w_{j}^{2}$ is the regularization term
+  - why divide by $2m$ -> to scale better with additional training data, also easier to choose $\lambda$
+- the new cost function try to minimize SEC to fit data, also minimize regularization term to reduce overfitting
+- how? by choosing $\lambda$ to balance between two goals
+
+  - what happen if we choose $\lambda = 0$? $\lambda = 10^{10}$ or any large number? Over or under fitting?
+
+- regularized linear regression update rules:
+- - $w_{j} = w_{j} - \alpha[\frac{1}{m}\sum_{i=1}^{m}(f_{\vec w,b}(\vec x^{i} - y^{i}))x_{j}^{i} + \frac{\lambda}{m}w_{j}]$
+  - $b = b - \alpha\frac{1}{m}\sum_{i=1}^{m}(f_{\vec w,b}(\vec x^{i} - y^{i})$
+- intuition?
+
+  - update rule for $w_{j}$ can be rewritten: $w*{j} = w*{j}(1 - \alpha\frac{\lambda}{m}) - \alpha[\frac{1}{m}\sum_{i=1}^{m}(f_{\vec w,b}(\vec x^{i} - y^{i}))x_{j}^{i}]$
+  - note that $\alpha$ is really small -> $1 - \alpha\frac{\lambda}{m}$ close to 0.9998 -> after each iteration we shrink $w_{j}$ just a little bit, hence reduce
+
+- regularized logistic regression:
+  - cost function: $J(\vec w,b) := J(\vec w,b) + \frac{\lambda}{2m}\sum_{j=1}^{n}w_{j}^{2}$
+  - update rules are the same as linear regression
