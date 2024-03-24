@@ -38,3 +38,17 @@
 - simplified version of cost function:
   - $J(\vec w, b) = -\frac{1}{m}\sum_{i=1}^{m}(y^{i}\log(f_{\vec w,b}(\vec x^{i})) + (1 - y^{i})\log(1 - f_{\vec w,b}(\vec x^{i})))$
 - intuition? derived from statistics, more specifically, maximum likelihood estimation -> find parameters of a logistic model
+
+- gradient descent update rules:
+  - $w_{j} = w_{j} -\frac{\alpha}{m}\sum_{i=1}{m}(f_{\vec w,b}(\vec x^{i}) - y^{i})x_{j}^{i}$
+  -
+  - $b = b -\frac{\alpha}{m}\sum_{i=1}{m}(f_{\vec w,b}(\vec x^{i}) - y^{i})$
+  - With $f_{\vec w,b} = \frac{1}{1 + e^{-(\vec w \cdot \vec x + b)}}$
+- same concepts: learning curve, vectorized implementation, feature scaling
+
+### Overfitting
+
+- not fitting the training data well? -> underfitting(high bias) (too few features)
+  - bias? happen when the model fail to capture a pattern in the data, or has a strong but wrong preconception
+- fitting the data set well? -> "normal-fitting" -> good generalization aka make predictions based on new inputs
+- fitting the data set extremely well? -> overfitting(high variance) -> not generalize well(too many features)
