@@ -56,3 +56,41 @@ model.predict(new_x)
 ```
 
 - AI consists of: artificial narrow intelligence(ANI) vs artificial general intelligence(AGI)
+
+### NN Training
+
+- model specification -> defining loss, cost function -> minimize the cost function
+- map to training NN? specify how to compute outputs given $\vec x$, $\vec w$, b
+
+```
+# Specify loss function for classification
+model.compile(loss = BinaryCrossentropy())
+
+# Specify loss function for classification
+model.compile(loss = MeanSquareError())
+
+```
+
+### Activation Functions
+
+- Rectified Linear Unit(ReLU) is an activation function $g(z) = max(0, z)$ allow for much more diverse activation values
+- Linear activation function $g(z) = z$, basically not using any activation function as well
+- Choosing activation function for output layer? -> Depends on type of problem
+  - binary classification -> sigmoid
+  - regression(allowed negative) -> linear
+  - regression(non-negative) -> ReLU
+- How about hidden layers? -> mostly ReLU
+  - Why? less computation, faster gradient descent
+- Why use AF at all?
+  - Suppose we use linear AF, output will be just another linear regression
+
+### Multiclass
+
+- softmax regression -> general version of logistic regression (more than 2 possible discrete outputs)
+  - $z_{i} = \vec w_{i} \cdot \vec x + b_{i}$
+  - $a_{i} = \frac{e^{z_{i}}}{e^{z_{1}} + e^{z_{2}} + e^{z_{3}} + .... + e^{z_{n}}} = P(y = i \mid \vec x)$ with i is $i^{th}$ class, n is number of classes
+  - loss function: $L = -\log(a_{i})$ if $y = i$
+
+```
+model.compile(loss = SparseCategoricalCrossentropy())
+```
