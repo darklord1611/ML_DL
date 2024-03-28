@@ -52,3 +52,42 @@ model.compile(loss = SparseCategoricalCrossentropy())
 - different types of layers:
   - Dense: each neuron output is a function of all activation outputs of the previous layer
   - Convolutional: each neuron only uses part of previous layer's outputs -> faster computation, less training data
+
+## Temporary
+
+### Bias - Variance
+
+- $J_{train}$ is high -> indicator of high bias(underfit)
+- $J_{train}$ is low, $J_{cv}$ is high -> high variance(overfit)
+- $J_{train}$ is low, $J_{cv}$ is low -> ideal situation
+- degree of the polynomial function increase -> $J_{train}$ is likely to decrease
+- choose the regularization parameter $\lambda$ -> trial and error, compare different $J_{cv}$ -> pick the lowest
+  - $J_{train}$ will increase as $\lambda$ increase, $J_{cv}$ will be a parabol
+- how to evaluate? compare to a human level of performance, competing algorithms performance, guessing
+- adding more data won't help with high bias, may be with high variance
+- how to visualize? learning curve
+- overfit -> pay too much attention to fit the training set not to generalize with new examples
+- how to improve?
+  - high bias: try adding more features, try adding more polynomial features, try decreasing $\lambda$
+  - high variance: getting more training examples, try smaller sets of features, try increasing $\lambda$
+
+### Bias-Variance with NN
+
+- bias-variance tradeoff:
+  - simple model -> high bias
+  - complex model -> high variance
+- NN large enough? almost always fit training set well
+- $J_{train}$ is high -> high bias -> use bigger network aka more hidden layers or more units per layer
+- $J_{cv}$ is high -> high variance -> get more data -> evaluate $J_{train}$ -> repeat
+- larger NN almost always better with appropriate regularization terms but computationally expensive
+
+```
+# Regularized layer
+layer = Dense(units=25, activation="relu", kernel_regularizer=L2(0.01))
+```
+
+### ML development cycle
+
+- overall architecture(model, data, etc...)
+- train the model
+- diagnostics(bias, variance, error analysis)
