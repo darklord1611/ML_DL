@@ -34,3 +34,51 @@
 ### Regression Tree
 
 - ok if we split the same feature on the left and right branches
+- compute the variance -> choose the best one
+
+### Tree Ensemble
+
+- single decision tree is prone to small changes -> how to solve? -> build multiple DT -> majority vote
+- sampling with replacement -> pick an example from dataset -> add to training set -> put back to dataset -> repeat
+  - ultimately we will get slightly different training sets -> slightly different decision trees
+- bagged decision tree algorithm:
+
+```
+Given training set of size m
+For b = 1 to B:
+    Use sampling with replacement to generate the training set of size m
+    Train a decision tree on the dataset
+```
+
+- better algorithm? random forest
+  - intuition: at every node, when choose a feature to split, if we have n features, pick out k(k < n) features by random, allowing DT to choose only from that subset
+
+### XGBoost
+
+- boosted trees focus on the thing you done wrong instead of all things
+
+```
+Given training set of size m
+For b = 1 to B:
+    Use sampling with replacement to generate the training set of size m
+    # more likely to pick misclassified examples from previously trained trees
+    Train a decision tree on the dataset
+```
+
+- eXtreme Gradient Boosting(XGBoost)
+
+  - open-source implementation of boosted trees
+  - fast efficient implementation
+  - good choice of splitting criteria and stopping criteria
+  - built-in regularization
+  - not using sample with replacement but weight assignments to examples
+
+- advantages of DT:
+  - tabular(structured) data
+  - human interpretable for a small, single DT
+  - fast
+- disadvantages of DT:
+  - not for unstructured data like image, audio, text
+  - expensive(tree ensemble)
+  - not working with transfer learning
+  - not compatible with multiple models
