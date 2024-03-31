@@ -1,0 +1,21 @@
+## Reinforcement Learning
+
+- reward function
+- state s
+- application:
+  - robot control
+  - finance trading
+  - factory optimization
+  - video games
+- an agent in an environment, in a state $s_{t}$ make an action $a_{t}$ -> get a reward $r_{t}$ and transit to the next state $s_{t}$
+- Markov Decision Process(MDP) characterizes the state of the world completely
+- defined by $(S,A,R,P,\gamma)$
+  - $S$: set of possible states
+  - $A$: set of possible actions
+  - $R$: distribution of reward given for (state, action) pair
+  - $P$: transition probability(or distribution) over the next given (state, action) pair
+  - $\gamma$: discount factor
+- random policy vs optimal policy(think of searching problem in a grid)
+- value function: evaluate how good is a state by calculating expected cumulative reward
+- Q-value function(also known as $Q^{*}$): evaluate how good is a (state, action) pair by calculating expected cumulative reward
+- (Bellman equation) as an iterative update -> hugh state space -> impossible
