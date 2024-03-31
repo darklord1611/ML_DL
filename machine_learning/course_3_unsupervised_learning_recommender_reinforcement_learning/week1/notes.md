@@ -60,6 +60,7 @@ repeat until converge:
 ### Recommender System
 
 - notations:
+
   - $r(i,j)$ = 1 if user $j$ has rated movie $i$
   - $y^{(i,j)} is the rating given by user $i$ on movie $j$
   - $w^{j}, b^{j}$ parameters for user $j$
@@ -68,3 +69,47 @@ repeat until converge:
   - for user $j$ and movie $i$, predict rating: $w^{j} \cdot x^{i} + b$
   - cost function: $L = \frac{1}{2}\sum_{i:r(i,j)=1}(w^{j} \cdot x^{i} + b - y^{(i,j)})^{2}$
   - add regularization term, sum of all cost for all users
+
+- how to come up with features?
+- collaborative filtering -> only possible if we have inputs from different sources about the same thing -> cost function now have 3 parameters w, b, x -> linear regression
+- binary labels? -> logistic regression
+- problems? users not rated any movies are likely to be predicted to rate only 0 stars -> use mean normalization
+  - subtract the mean of each movie's ratings(rows) and add back once figure out parameters
+
+```
+w = tf.Variables(3.0)
+x = 1.0
+y = 1.0
+alpha = 0.1
+
+iterations = 30
+
+for iter in range(iterations):
+    with tf.GradientTape() as tape:
+        fwb = w * x
+        costJ = (fwb - y) ** 2
+    [dJdw] = tape.gradient(costJ, [w])
+
+    w.assign_add(-alpha * dJdw)
+```
+
+- how to interpret features to find related items?
+  - find item with similar feature vector
+- limitations of collaborative filtering:
+
+  - cold start problem
+  - unable to use side information
+
+- collaborative filtering: based on ratings of users who gave similar ratings as you
+
+### Content-based filtering
+
+- content-based filtering: based on features of user and items to find a good match
+  - user features: age, gender, country, ...
+  - movie features: year, genre, country, ....
+  - goal is compute a vector represent user's preferences vs a vector represent a movie's features
+- compute user network and movie network -> combine both and define a cost function
+
+- how to find recommendation from a large set of items? retrieval & ranking
+  - retrieval: generate a list of plausible candidate items
+  - ranking: take precomputed list and rank them using trained model
