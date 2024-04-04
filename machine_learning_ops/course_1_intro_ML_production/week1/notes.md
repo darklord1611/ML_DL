@@ -29,3 +29,10 @@
   - send requests -> prediction models on the cloud -> return responses
 
 - MLOps: an emerging discipline, compromises a set of tools, methods, principles to support progress of a ML project lifecycle
+- key challenges with deployment:
+    - concept drift -> the nature of the problem change, data drift -> change in data distribution
+    - SE issues: real-time or batch, clouds or edge/browser, compute resources(CPU/GPU/memory), latency & throughput(QPS), logging, security & privacy
+- common deployment cases: gradually ramp up with monitoring and rollback
+    - new product or capability
+    - automate/assist with manual task
+    - replace previous ML system
