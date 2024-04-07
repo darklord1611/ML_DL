@@ -36,3 +36,21 @@
     - new product or capability
     - automate/assist with manual task
     - replace previous ML system
+- shadow mode deployment: compare human's performance with model's performance until there is a negligible difference 
+- canary deployment: use model for a small fraction of traffic -> gradually increase based on result metrics -> spot early mistakes
+- blue green deployment: use an older and new version of the model, flexibly switching a fraction between them -> enable easy rollback 
+- degree of automation: human only -> shadow mode -> AI assistance -> partial automation -> full automation
+
+### Monitoring
+- use a dashboard, define few statistics/metrics to evaluate, start with many -> refine to a small number of metrics
+- some type of metrics:
+    - software metrics: memory, throughtput, latency, serverload
+    - input metrics
+    - output metrics
+
+### Modeling
+- algorithms/model + hyperparameters + data -> ML model 
+- challenges?
+    - doing well on training sets
+    - doing well on dev/test sets
+    - doing well according to business/project metrics
