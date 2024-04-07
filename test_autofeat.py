@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
+import pickle
 
 import lazytransform as lt
 from autofeat import AutoFeatClassifier
@@ -68,7 +69,7 @@ print()
 
 model = AutoFeatClassifier(verbose=1)
 X_train_with_feature_creation = model.fit_transform(X_train, y_train)
-X_train_with_feature_creation.head()
+print(X_train_with_feature_creation.head(1))
 
 
 # In[ ]:
@@ -96,5 +97,8 @@ print()
 # In[ ]:
 print(f"--- {round(time.time() - start_time, 2)} seconds ---")
 
+pkl_filename = "model.pkl"
+with open(pkl_filename, 'wb') as file:
+    pickle.dump(model_2, file)
 
 
