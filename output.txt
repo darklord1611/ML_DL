@@ -1,59 +1,0 @@
-Imported lazytransform v1.16. 
-
-Before transformation
-       Age          WorkClass  ...  HoursPerWeek   NativeCountry
-5514    33          Local-gov  ...            50   United-States
-19777   36            Private  ...            50   United-States
-10781   58   Self-emp-not-inc  ...            40   United-States
-32240   21            Private  ...            46   United-States
-9876    27            Private  ...            40   United-States
-...    ...                ...  ...           ...             ...
-29802   47            Private  ...            40   United-States
-5390    31            Private  ...            21   United-States
-860     18            Private  ...            20   United-States
-15795   50   Self-emp-not-inc  ...            84   United-States
-23654   34       Self-emp-inc  ...            60   United-States
-
-[26048 rows x 14 columns]
-
-    Single_Label Binary_Classification problem 
-Shape of dataset: (26048, 14). Now we classify variables into different types...
-    Returning dictionary for variable types with following keys:
-                        continuous_vars = 0, int_vars = 6, 
-                        discrete_string_vars = 1, nlp_vars = 0,
-                        date_vars = 0, time_deltas = 0,
-                        categorical_vars = 7, date_zones = 0
-    no date time variables detected in this dataset
-    Beware! onehot encoding can create hundreds if not 1000s of variables...
-label encoder selected for transforming all categorical variables
-Using OneHotEncoder() and My_LabelEncoder() as encoders
-Caution: ### When you have categorical or date-time vars in data, scaling may not be helpful. ##
-Check the pipeline creation statement for errors (if any):
-	make_column_transformer((lep_one, catvars[0]),(lep_one, catvars[1]),(lep_one, catvars[2]),(lep_one, catvars[3]),(lep_one, catvars[4]),(lep_one, catvars[5]),(lep_one, catvars[6]),(lep_two, discretevars[0]),(imp, intvars),(imp, floatvars),    remainder=remainder)
-    no other vars left in dataset to transform...
-Time taken to define data pipeline = 6 second(s)
-No model input given...
-Lazy Transformer Pipeline created...
-    Time taken to fit dataset = 7 second(s)
-    Time taken to transform dataset = 7 second(s)
-    Shape of transformed dataset: (26048, 67)
-    Time taken to transform dataset = 1 second(s)
-    Shape of transformed dataset: (6513, 67)
-
-After transformation
-       WorkClass_Localgov  WorkClass_Private  ...  CapitalLoss  HoursPerWeek
-5514                    4                  0  ...            0             4
-19777                   0                  2  ...            4             4
-10781                   0                  0  ...            0             3
-32240                   0                  2  ...            0             3
-9876                    0                  2  ...            0             3
-...                   ...                ...  ...          ...           ...
-29802                   0                  2  ...            0             3
-5390                    0                  2  ...            0             1
-860                     0                  2  ...            0             1
-15795                   0                  0  ...            0             6
-23654                   0                  0  ...            0             4
-
-[26048 rows x 67 columns]
-
-[feateng]               0/             67 features transformed[feateng]               0/           4371 feature tuples combined[feateng]             100/           4371 feature tuples combined[feateng]             200/           4371 feature tuples combined[feateng]             300/           4371 feature tuples combined[feateng]             400/           4371 feature tuples combined[feateng]             500/           4371 feature tuples combined[feateng]             600/           4371 feature tuples combined[feateng]             700/           4371 feature tuples combined[feateng]             800/           4371 feature tuples combined[feateng]             900/           4371 feature tuples combined[feateng]            1000/           4371 feature tuples combined

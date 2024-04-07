@@ -20,7 +20,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # In[56]:
 
-start_time = time.time()
+    start_time = time.time()
 
 df = pd.read_csv(
     "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data",
@@ -30,8 +30,8 @@ df.columns = [
     "MaritalStatus", "Occupation", "Relationship", "Race", "Gender",
     "CapitalGain", "CapitalLoss", "HoursPerWeek", "NativeCountry", "Income"
 ]
-X = df.iloc[:, :-1]
-y = (df.iloc[:, -1] == " >50K").astype(int)
+X = df.iloc[0:100, :-1]
+y = (df.iloc[0:100, -1] == " >50K").astype(int)
 
 seed = 42
 np.random.seed(seed)
