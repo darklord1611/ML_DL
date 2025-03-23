@@ -1,3 +1,0 @@
-- How do we represent the meaning of a word?
-  - Use WordNet - a thesaurus of synonym sets and hypernyms(describes "is-a" relationship) -> what's wrong? not enough contexts, impossible to keep up-to-date, human labor
-  - Statistical models represent words as one-hot vectors
