@@ -68,7 +68,6 @@ The **argmax** operation is non-differentiable, which makes it unsuitable for gr
 
 ---
 
-
 ### 1.6 LSTM Backbone and Classification
 
 The LSTM backbone processes the sequence of prototype similarities to capture temporal patterns and produce the final classification:
@@ -119,9 +118,19 @@ $$
 
 - **Sentence-Level Prototypes**: Each sentence in a text is mapped to a prototype—a representative sentence from the training data. This breaks down documents into smaller, interpretable units, ideal for long or complex texts.
 
-- **Prototype Trajectories**: The sequence of prototypes forms a trajectory, capturing temporal dynamics (e.g., sentiment shifts). This trajectory is processed by the LSTM, providing a human-understandable representation of the text.
+- **Prototype Trajectories**: The sequence of prototypes forms a trajectory, capturing temporal dynamics (e.g., sentiment shifts). This trajectory is processed by the LSTM, providing a human-understandable representation of the text. Important when we trying to understand in a more fine-grained manner to the prediction of model.
 
-### 3.2 LSTM Component and Its Role
+### 3.2 Explain LSTM
+
+- AdaAX -> explain RNNs
+- Idea? Build a deterministic finite automata(DFA) that mimics the transitions and states of a RNN
+  - Input symbols -> words in a sentence
+  - States -> a group of hidden states(core sets) that share the same transitional symbol to get to the accepting states
+- Mapping to prototype trajectories:
+  - Input symbols -> associated prototype definition for each sentence in a document
+
+
+### 3.3 LSTM Component and Its Role
 
 - **Temporal Pattern Capture**: The LSTM processes the sequence of prototypes, learning how sentiments or topics evolve over time. This is critical for tasks like sentiment analysis, where overall sentiment depends on sentence progression.
 
@@ -129,7 +138,7 @@ $$
 
 - **DFA for LSTM Explanation**: A Deterministic Finite Automaton (DFA) is used to summarize the LSTM's decision-making. For example, a pattern like "7 → 4" means the model predicts positive sentiment if the first sentence maps to prototype 7 and the second to prototype 4. This provides a high-level, interpretable summary of the LSTM's behavior.
 
-### 3.3 Prototype Pruning for Enhanced Interpretability
+### 3.4 Prototype Pruning for Enhanced Interpretability
 
 - **Reducing Prototype Count**: ProtoryNet prunes rarely used prototypes, leaving only the most relevant ones (around 20 in experiments). This simplifies the model and improves interpretability.
 
