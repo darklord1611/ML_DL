@@ -3,6 +3,10 @@ venv
 
 **/*.pyc
 
+**/*.zip
+
+**/.OTTER_LOG
+
 **/venv/
 
 **/__pycache__/
