@@ -14,3 +14,9 @@
 - How does sample size affects confidence interval? Larger sample size -> less variance, reduced standard error, aka narrower confidence interval -> better parameter estimate
 - For normally distributed variables, the interval “center +- 2 SDs” contains 95% of the data.
 - Maximum SD of a population of zeroes and ones is 0.5.
+
+
+- a measure of how tightly clustered a scatter diagram is about a straight line -> linear association
+- The **correlation coefficient** r (-1 <= r <= 1) measures the strength of the linear relationship between two variables -> how do we calculate r? -> the average of the products of standard units
+- Convert any values to standard units? -> (x - mean) / std
+- std = sqrt(sum((data - mean) ** 2) / len(data))
