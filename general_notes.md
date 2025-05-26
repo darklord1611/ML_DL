@@ -27,3 +27,10 @@
 - Original image ![Original Image](images/original_image.png)
 - After apply a filter ![Filtered Image](images/after_apply_filter.png)
 - After go through a non-linear ![Image](images/after_non_linear.png)
+
+- After applying ReLU, the feature maps may contain lots of 0s -> we need to find a way to downsample(aka make the map smaller and more condense -> more effective gradient) -> maximum(average) pooling
+- After apply maximum pooling ![Image](images/after_pooling.png)
+- Does the zero pixels really contain no information? Wrong, they contain **positional** information -> when we remove those pixels, an interesting property emerges -> **translation invariance**
+- Translation? In mathmetical terms, it tell us to change the position of something without rotate or change it's shape or sizes ![Image](images/translation_invariance.png)
+- Why is it important? Since the same kind of features can emerge at different positions in an image, we want the classifier to notice that they are the same or closely resembled
+- In simple terms, we care less about where the feature activates(x, y) on the image and just focus on whether the feature is activated or not.
