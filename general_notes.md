@@ -34,3 +34,21 @@
 - Translation? In mathmetical terms, it tell us to change the position of something without rotate or change it's shape or sizes ![Image](images/translation_invariance.png)
 - Why is it important? Since the same kind of features can emerge at different positions in an image, we want the classifier to notice that they are the same or closely resembled
 - In simple terms, we care less about where the feature activates(x, y) on the image and just focus on whether the feature is activated or not.
+- **Global Average Pooling** could replace the classifier head of CNNs by just take the feature maps and average to a single value -> reduce the number of parameters.
+
+
+### Sliding Window
+
+![Sliding Window Image](images/sliding_window.gif)
+
+- **Stride** measures how many pixels we should slide our kernel forwards
+- Example: ![Stride](images/stride.gif)
+- The larger the stride, the lower the quality of feature map (less fine-grained)
+
+- **Padding** determines how to handle out-of-range pixels when sliding our kernel, two strategies including **valid** aka make sure the window valid the whole time and **same** -> pad the image with extra 0s pixels so that the output size == input size
+- Example: ![Stride](images/padding.gif)
+
+- The **receptive field** of a neuron (or unit) in a specific layer of a CNN is the region in the original input image that contributes to the activation of that neuron.
+
+- Why don't we just stick a large kernel instead of stacking different layers with small kernels? -> Because of parameter efficiency as well as nonlinearity through different layers.
+- CNN can also be used for other things like time-series, 1D convolution, etc.
