@@ -1,0 +1,37 @@
+# Mechanistic Interpretability
+
+- Goal: Understanding the internal reasoning process of a trained neural network
+- Why do we want to do that? Because with larger frontier models, we can't know about how the model predicts that way, potentially with hidden biases, bugs, flaws
+
+- We need to detect unaligned model behaviours to prevent harbouring ulterior motives (deception), tell users what they want to hear (sycophancy) or cut corners to more efficiently achieve reward (reward-hacking)
+- With MechInterp, we can also steer the model behaviour, removing biases
+
+- Features: meaningful, isolated concepts that a model represents, usually confine to a single layer in the network
+- Circuits: a way of grouping related features, combine low-level concepts to represent more complex representations, could span across multiple layers of the network
+
+Example:
+- One layer in an image classifier model contains features that can detect curves, fur, and the colour brown
+- These combine to create a circuit, which outputs a new, more complex feature (curves + fur + brown → dog ear)
+- In a later layer, the 'dog ear' feature combines with other features to create a new circuit, which in turn results in an even more complex feature (dog ear + dog eyes + snout + dog mouth → dog head)
+
+- Features -> what information is processed, Circuits -> how the network process those information
+
+- Universality Hypothesis: different neural networks tend to converge on similiar patterns of features and circuits
+
+
+- How can we isolate and figure out which parts of the network responsible for which features?
+- A single neuron can respond to multiple features, the same way as a feature could be spread across multiple neurons -> polysemanticity
+
+- polysemanticity is a result of superposition aka model has to compress information because number of features >> number of neurons -> some neurons will respond to multiple features
+- we want monosemanticity aka a single neuron will only correlate with a single feature
+
+- How to resolve this problem?
+    - Train the model in such a way that doesn't exhibit superposition in the first place -> not applicable since models utilize superposition to captures more pattern of data with fewer neurons
+    - Force the model to learn more compressed representations using a sparse autoencoder
+
+- Sparse Autoencoder: take the neuron activations matrix after a specific layer L, then multiply with the weight matrix of size(activation vector) * size(concept vector)
+- Then we have a concept vector -> introduce sparsity, make most of the concept vector 0, then multiply by another weight matrix of size(concept vector) * size(activation vector)
+- Then we have the reconstructed activation vector -> minimize the loss between the original and the reconstructed
+
+
+- Logits Lens -> apply unembedding matrix to activations of earlier layers to see the change in probability distribution of the prediction
