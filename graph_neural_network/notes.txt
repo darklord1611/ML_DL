@@ -1,0 +1,24 @@
+# Graph Neural Network
+- Properties: vertices, edges, global attributes(number of edges, number of vertices, .....)
+
+- We can represent whole lots of things as graphs: social networks, traffic systems, recommendation, etc ...
+- Something usually never heard of would be represent images and texts as graphs, one thing noticeable is that the number of neighbors of both is fixed
+    - Images would be connected to their 8-neighbors, a word(token) would be connected to the previous and next token in the sequence
+
+- On the other hand, something like molecules is much more unpredictable, we would have number of neighbors as a variable, math problems, programming code, social network, citation networks -> each thing would have its own characteristics
+
+- OK, so why do we need to represent something as a graph -> because it much easier to visualize as well as predict something that we care about(using some will-be-discussed techniques)
+- 3 types of problems: graph-level(where we construct a graph and then try to infer some property about that graph), edge-level, node-level (these two same description)
+    - Graph-level: For example, for a molecule represented as a graph, we might want to predict what the molecule smells like, or whether it will bind to a receptor implicated in a disease. **Relate** to images and texts, what sort of problems look familiar?
+    - Node-level: For example, for a social network represented as a graph, we may want to predict whether a person is friendly or not. **Relate** to images and texts, what sort of problems look familiar? Think of a person as a word in text sequence or a pixel in image.
+    - Edge-level: image-scene understanding, We can phrase this as an edge-level classification: given nodes that represent the objects in the image, we wish to predict which of these nodes share an edge or what the value of that edge is. ![Original Image](../images/edge_level_gnn.png)
+
+
+- So what happened if we represent graph data as any other structure data in machine learning?
+-> Since there too many variables: vertices, edges, global attributes and connectivity
+- Represented as adjency matrix(# of edges x # of edges) -> too sparse, inefficient memory, different matrices -> different results, can not satisfy the permutation invariant property of a graph
+
+- Represented as adjacency list -> ok, since we expect the number of edges << number of vertices -> O(# of vertices), usually in the form of [number_of_vertices, single_vertice_dim]
+
+
+

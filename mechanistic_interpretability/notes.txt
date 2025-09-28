@@ -34,4 +34,28 @@ Example:
 - Then we have the reconstructed activation vector -> minimize the loss between the original and the reconstructed
 
 
+- Probing
+- Activation Patching
 - Logits Lens -> apply unembedding matrix to activations of earlier layers to see the change in probability distribution of the prediction
+- Sparse Autoencoders
+- Automated Explanation
+
+
+- BLIP-2: Bootstraping Language Image Pretraining -> utilize pretrained vision and language models, propose Querying Transformer (Q-Former) to bridge the modality gap
+- Two-stage training
+    - Representation learning: Q-Former learn to extract visual representation most relevant to the question(text)
+    - Generative learning: output of Q-Former connect to a frozen LLM to generate text
+
+- How to align visual feature to text space of LLM without fine-tune?
+
+
+- DCluB -> generate visual clues first, then passing visual clues to a NLI model for inference
+- Visual clues are currently human annotated, then fine-tune via instruction tuning on InstructBLIP 
+
+
+- A neural network would implement some kind of algorithms through their parameters, it takes data as input, transform the internal activations through a number of steps and we get the output
+- Different parts of the network would be responsible for different steps in that transformation, the job of MechInterp is to identify the roles of those network components
+
+- Two main approaches: reverse engineering and concept-based Interpretability
+    - Reverse engineering: try to decompose the network into several components -> find the roles(functions) of those components, what do they do, how they are related to the input-output transformation
+    - Concept-based Interpretability: define a set of concepts that maybe use in the network and then try to find components that appear consistently with those concepts
